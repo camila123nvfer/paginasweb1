@@ -1,1 +1,233 @@
+/* CONFIGURACIONES GENERALES Y RESETEO */
+/* NOTA DE AYUDA: Reset básico */
+/* Esto elimina los márgenes y rellenos predeterminados de los navegadores para tener un control total del diseño. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Fuente principal por defecto */
+}
 
+/* NOTA DE AYUDA: Colores y Variables */
+/* Definimos las variables de color para que sea más fácil cambiar el tema en el futuro. He extraído los colores exactos de la imagen. */
+:root {
+    --bg-color-main: #FFFFFF;
+    --bg-color-sidebar: #E9E5E2;
+    --color-primary: #5A2D35; /* El color granate oscuro principal */
+    --color-title-name: #5A2D35;
+    --color-text-main: #4A4A4A;
+    --color-text-light: #707070;
+    --color-background-heading: #B9B4AD;
+    --border-color: #5A2D35;
+}
+
+body {
+    background-color: #F0F0F0;
+    color: var(--color-text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+/* Imita el formato de una hoja A4. */
+.cv-container {
+    width: 210mm; /* Ancho A4 estándar */
+    min-height: 297mm; /* Alto A4 estándar */
+    background-color: var(--bg-color-main);
+    display: flex;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra para efecto de papel */
+}
+
+/* BARRA LATERAL IZQUIERDA */
+.sidebar {
+    width: 35%;
+    background-color: var(--bg-color-sidebar);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ENCABEZADO Y NOMBRE */
+.header {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* NOTA DE AYUDA: Estilo de fuente 'Arizonia' */
+.name-first {
+    font-family: 'Arizonia', cursive;
+    font-size: 80px;
+    color: var(--color-title-name);
+    line-height: 0.8;
+}
+
+.name-last {
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.3em;
+    color: #000;
+    margin-top: -10px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: #000;
+    margin-top: 15px;
+}
+
+/* FOTOGRAFÍA */
+/* NOTA DE AYUDA: El marco de la foto */
+/* El marco tiene el color granate oscuro (`--border-color`) y la imagen está escalada y recortada para encajar perfectamente. */
+.photo-frame {
+    width: 200px;
+    height: 200px;
+    border: 10px solid var(--border-color);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TÍTULOS DE SECCIÓN LATERALES */
+/* NOTA DE AYUDA: Botones de encabezado */
+/* Replicamos el estilo de "botón" de los títulos de sección. Usamos un color de fondo gris claro (`--color-background-heading`), color de texto blanco y bordes redondeados. */
+.section-title {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: #FFF;
+    background-color: var(--color-background-heading);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* CONTACTO */
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+/* NOTA DE AYUDA: Estilo de iconos */
+/* Ajustamos el tamaño y color de los iconos. Los SVG insertados deben tener una clase `contact-icon`. */
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(18%) sepia(18%) saturate(1450%) hue-rotate(307deg) brightness(91%) contrast(83%); /* Este filtro aplica el color #5A2D35 a iconos negros. */
+}
+
+/* SOBRE MÍ */
+.bio-text {
+    font-size: 13px;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* IDIOMAS - BARRAS DE PROGRESO */
+/* NOTA DE AYUDA: Barras de Idiomas */
+/* Replicamos el diseño de las barras de progreso. Usamos un fondo claro (`#F3EEEA`) y un nivel relleno (`--border-color`). */
+.language-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.language-name {
+    width: 90px;
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+.skill-bar {
+    width: 140px;
+    height: 12px;
+    background-color: #F3EEEA;
+    margin-left: 10px;
+    border-radius: 0;
+}
+
+.skill-level {
+    height: 100%;
+    background-color: var(--border-color);
+}
+
+/* CONTENIDO PRINCIPAL DERECHO */
+.main-content {
+    width: 65%;
+    padding: 60px 50px;
+}
+
+/* TÍTULOS DE SECCIÓN PRINCIPALES */
+/* Mismo estilo que los laterales pero más anchos. */
+.main-section-title {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: #FFF;
+    background-color: var(--color-background-heading);
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+/* EXPERIENCIA LABORAL */
+.experience-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(185, 180, 173, 0.3); /* Una línea divisoria sutil */
+}
+
+.last-item {
+    border-bottom: none; /* Quitamos la línea del último elemento */
+}
+
+.job-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* NOTA DE AYUDA: Tipografía de puestos de trabajo */
+.company-position {
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+.date {
+    font-size: 14px;
+    color: #000;
+}
+
+.experience-item p {
+    font-size: 13px;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
