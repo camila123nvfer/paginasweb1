@@ -1,0 +1,119 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FUENTE GENERAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f3edf4;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* COLUMNA IZQUIERDA */
+.left {
+    width: 35%;
+    background: #6c3a6f;
+    color: white;
+    padding: 30px;
+    position: relative;
+}
+
+/* FORMA ORGÁNICA (decoración) */
+.left::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #8d5b8f;
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+}
+
+/* FOTO */
+.photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.photo img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+/* SECCIONES */
+.section {
+    margin-top: 25px;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* LISTAS */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* ICONOS */
+.section img {
+    width: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* COLUMNA DERECHA */
+.right {
+    width: 65%;
+    padding: 40px;
+    color: #4b2c4d;
+}
+
+/* HEADER */
+.header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #6c3a6f;
+}
+
+.header h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* ITEMS */
+.item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.item img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+}
