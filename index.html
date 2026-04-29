@@ -1,1 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Camila Gil Plata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Fuente Poppins para todo el documento */
+            color: #333333; /* Color de texto base, un gris oscuro */
+            line-height: 1.5;
+            background-color: #ffffff; /* Fondo blanco de la página */
+        }
 
+        /* --- CONTENEDOR PRINCIPAL DEL CV --- */
+        .cv-container {
+            width: 794px; /* Ancho estándar de un folio A4 a 96 DPI, para que sea imprimible */
+            height: 1123px; /* Alto estándar A4 */
+            margin: 20px auto; /* Centrado en la pantalla con un margen superior/inferior */
+            background: linear-gradient(135deg, #f2eefa 0%, #f2eefa 100%); /* Fondo lila muy claro para simular el papel */
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Sombra suave para efecto de papel */
+            display: flex; /* Usamos flexbox para las dos columnas */
+            overflow: hidden; /* Para asegurar que el contenido no se salga */
+            position: relative; /* Para el posicionamiento de las formas de fondo */
+        }
+
+        /* --- FORMAS ABSTRACTAS DE FONDO --- */
+        /* NOTA DE AYUDA (2): Estas formas intentan replicar las formas abstractas de la imagen.
+           Como programador JR, se han generado como SVGs simples en línea para este ejemplo.
+           En una producción real, o si se desea una fidelidad al 100%, podrían ser imágenes
+           generadas en un programa de diseño (ej. Figma o Illustrator) y cargadas como PNG/SVG. */
+        .form-shape-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 40%;
+            background-color: #6a4087; /* El color lila oscuro principal */
+            border-bottom-right-radius: 50%; /* Intento de curva simple */
+            z-index: 1; /* Para que quede detrás del texto y la foto */
+        }
+
+        /* NOTA DE AYUDA (2 - EXTRA): Por simplicidad y enfoque en la estructura, no he replicado
+           exactamente todas las formas lila claro de fondo. Esto se debe a que son formas abstractas
+           únicas que requerirían un trabajo de diseño gráfico específico para ser replicadas a la perfección
+           como imágenes de fondo de alta resolución. Para un MVP (Minimum Viable Product), el color de fondo
+           lila claro es suficiente para la legibilidad. Si el diseño final lo requiere, se necesitarían
+           archivos de imagen específicos para esas formas abstractas. */
+
+        /* --- COLUMNA IZQUIERDA (OSCURA) --- */
+        .cv-sidebar {
+            width: 320px; /* Ancho de la columna izquierda */
+            background-color: transparent; /* El color lila oscuro se aplica con .form-shape-1 */
+            padding: 60px 30px;
+            color: #4a3059; /* Texto de la columna izquierda, lila más oscuro para contraste */
+            position: relative;
+            z-index: 10; /* Por encima de las formas de fondo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* FOTO DE PERFIL */
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 10px; /* Bordes ligeramente redondeados como en la imagen */
+            margin-bottom: 40px;
+            border: 2px solid #ffffff; /* Un pequeño borde blanco para resaltar */
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen llene el espacio sin deformarse */
+        }
+
+        /* INFORMACIÓN PERSONAL BÁSICA */
+        .personal-info-item {
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .personal-info-label {
+            font-weight: 600; /* Negrita */
+            color: #4a3059; /* Lila oscuro */
+        }
+
+        /* SECCIONES DE LA COLUMNA IZQUIERDA (TÍTULOS CON ICONOS) */
+        .sidebar-section {
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-section-title {
+            font-size: 20px;
+            font-weight: 700; /* Negrita extra */
+            color: #6a4087; /* El lila oscuro principal */
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid transparent; /* No tiene línea en la imagen */
+            padding-bottom: 0px;
+            text-transform: uppercase;
+        }
+
+        /* NOTA DE AYUDA (3): Como programador Jr., para los iconos he utilizado imágenes SVG simples.
+           Los iconos deben ser colocados en la carpeta "CV" y sus rutas actualizadas aquí.
+           Otra opción común y a menudo mejor para iconos es usar fuentes de iconos como FontAwesome o Lucide.
+           Para este ejercicio, se han replicado como imágenes para mayor simplicidad. */
+        .sidebar-section-title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        /* DETALLES DE CONTACTO */
+        .contact-details-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #4a3059; /* Texto lila oscuro */
+        }
+
+        .contact-details-item img {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+        }
+
+        /* LISTA DE HABILIDADES */
+        .skills-list {
+            list-style-type: disc; /* Viñetas estándar */
+            padding-left: 20px; /* Espaciado para las viñetas */
+            color: #4a3059; /* Texto lila oscuro */
+        }
+
+        .skills-list li {
+            margin-bottom: 8px;
+        }
+
+        /* --- COLUMNA DERECHA (TÍTULOS Y CONTENIDO) --- */
+        .cv-main-content {
+            flex: 1; /* Ocupa el resto del espacio */
+            background-color: transparent; /* El lila claro de fondo se aplica con el gradiente del contenedor principal */
+            padding: 60px 40px;
+            z-index: 10;
+        }
+
+        /* NOMBRE Y PUESTO */
+        .name {
+            font-size: 40px;
+            font-weight: 700; /* Negrita extra */
+            color: #6a4087; /* El lila oscuro principal */
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .job-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6a4087; /* El lila oscuro principal */
+            text-transform: uppercase;
+            margin: 5px 0 50px 0;
+            letter-spacing: 1px;
+        }
+
+        /* SECCIONES DEL CONTENIDO PRINCIPAL (TÍTULOS CON ICONOS) */
+        .main-section {
+            margin-bottom: 40px;
+        }
+
+        .main-section-title {
+            font-size: 20px;
+            font-weight: 700; /* Negrita extra */
+            color: #6a4087; /* El lila oscuro principal */
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid transparent; /* No tiene línea en la imagen */
+            text-transform: uppercase;
+        }
+
+        /* NOTA DE AYUDA (3.1): Al igual que en la columna izquierda, para los iconos principales
+           he utilizado imágenes SVG. Los iconos deben ser colocados en la carpeta "CV" y sus rutas actualizadas aquí. */
+        .main-section-title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        /* CONTENIDO DE SECCIÓN (TEXTO PLANO) */
+        .section-text {
+            color: #333333; /* Texto oscuro base */
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        /* BLOQUES DE FORMACIÓN/ACTUALIZACIONES (ESTRUCTURA SIMILAR) */
+        .info-block {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .info-block-title {
+            font-size: 16px;
+            font-weight: 600; /* Negrita */
+            color: #333333; /* Texto oscuro base */
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .info-block-subtitle {
+            font-size: 14px;
+            color: #666666; /* Gris más suave */
+            margin: 0 0 2px 0;
+        }
+
+        .info-block-date {
+            font-size: 14px;
+            color: #666666; /* Gris más suave */
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* NOTA DE AYUDA (4): En la imagen, hay un icono de sombrero de graduación en la sección de Formación Académica.
+           Como programador JR, lo he incluido como un elemento SVG en línea. Para su uso real, debe ser un archivo de imagen en la carpeta "CV".
+           Se ha posicionado de forma similar al ejemplo. */
+        .academic-icon-inline {
+            position: absolute;
+            left: -40px; /* Desplazado a la izquierda */
+            top: 0;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .main-section.academic {
+            padding-left: 40px; /* Para hacer espacio al icono inline */
+        }
+        
+        .main-section.updates {
+             padding-left: 0; /* No tiene icono inline */
+        }
+
+        /* NOTA DE AYUDA (5): En la sección de Actualizaciones, el primer bloque tiene el icono de actualizar.
+           He utilizado flexbox para posicionar el icono al lado del texto. Este icono debe estar en la carpeta "CV". */
+        .updates-title-with-icon {
+            display: flex;
+            align-items: center;
+        }
+        .updates-icon-inline {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="form-shape-1"></div>
+
+        <aside class="cv-sidebar">
+            <div class="profile-pic">
+                <img src="CV/profile.jpg" alt="Foto de Camila Gil Plata">
+            </div>
+
+            <div class="personal-info-item">
+                <span class="personal-info-label">Fecha de nacimiento:</span> 23/03/26
+            </div>
+            <div class="personal-info-item">
+                <span class="personal-info-label">Edad:</span> 18 años
+            </div>
+            <div class="personal-info-item">
+                <span class="personal-info-label">Nacionalidad:</span> Mexicana
+            </div>
+
+            <section class="sidebar-section">
+                <h2 class="sidebar-section-title"><img src="CV/icon-user.svg" alt=""> CONTACTO</h2>
+                <div class="contact-details">
+                    <div class="contact-details-item"><img src="CV/icon-phone.svg" alt="">+52 712 353 1210</div>
+                    <div class="contact-details-item"><img src="CV/icon-mail.svg" alt="">camilagilplata@gmail.com</div>
+                    <div class="contact-details-item"><img src="CV/icon-location.svg" alt=""></div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h2 class="sidebar-section-title"><img src="CV/icon-brain.svg" alt=""> HABILIDADES</h2>
+                <ul class="skills-list">
+                    <li>Sentido de innovación</li>
+                    <li>Estrategia de redes sociales</li>
+                    <li>Herramientas de análisis</li>
+                    <li>Conocimientos SEO</li>
+                    <li>Conocimientos literarios</li>
+                    <li>Conocimientos de Marketing y Publicidad</li>
+                    <li>Buena ortografía</li>
+                    <li>Buena oratoria</li>
+                    <li>Conocimiento musical amplio</li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="cv-main-content">
+            <h1 class="name">CAMILA GIL PLATA</h1>
+            <h3 class="job-title">ESTUDIANTE DE 6° SEMESTRE DE PREPARATORIA</h3>
+
+            <section class="main-section">
+                <h2 class="main-section-title">SOBRE MÍ</h2>
+                <p class="section-text">
+                    Estudiante de preparatoria, creativa, empática, comprometida, sé trabajar en equipo, me interesa el área social y ambiental, soy apasionada por lo que me gusta, estoy en constante crecimiento y aprendizaje, pues me encanta nutrir mis conocimientos día a día y aprender del entorno que me rodea.
+                </p>
+            </section>
+
+            <section class="main-section academic">
+                <h2 class="main-section-title">FORMACIÓN ACADÉMICA</h2>
+                
+                <div class="info-block">
+                    <img src="CV/icon-graduation-cap.svg" class="academic-icon-inline" alt="">
+                    <h4 class="info-block-title">0503 GRAL. IGNACIO ZARAGOZA</h4>
+                    <p class="info-block-subtitle">Secundaria</p>
+                    <p class="info-block-date">2020-2023</p>
+                </div>
+                
+                <div class="info-block">
+                    <img src="CV/icon-graduation-cap.svg" class="academic-icon-inline" alt="">
+                    <h4 class="info-block-title">INSTITUTO CULTURAL CANADIENSE</h4>
+                    <p class="info-block-subtitle">Preparatoria</p>
+                    <p class="info-block-date">2023-2026</p>
+                </div>
+            </section>
+
+            <section class="main-section updates">
+                <div class="main-section-title updates-title-with-icon">
+                    <img src="CV/icon-refresh.svg" class="updates-icon-inline" alt="">
+                    ACTUALIZACIONES
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">CURSO CERTIFICADO DE TRIGONOMETRÍA Y GEOMETRÍA ANALÍTICA.</h4>
+                    <p class="info-block-date">2026</p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">CURSO CERTIFICADO DE ADMINISTRACIÓN DE RECURSOS HUMANOS.</h4>
+                    <p class="info-block-date">2026</p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">CURSO CERTIFICADO DE NUTRICIÓN Y OBESIDAD: CONTROL DE SOBREPESO.</h4>
+                    <p class="info-block-date">2026</p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">CURSO CERTIFICADO DE TESOROS DE LA FÍSICA Y SUS DESCUBRIDORES</h4>
+                    <p class="info-block-date">2025</p>
+                </div>
+                
+                <div class="info-block">
+                    <h4 class="info-block-title">CURSO CERTIFICADO DE CÓMO CONVERTIR MI IDEA ENEMPRESA</h4>
+                    <p class="info-block-date">2025</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
